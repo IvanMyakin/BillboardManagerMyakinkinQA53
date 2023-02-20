@@ -68,7 +68,7 @@ class MoviesManagerTest {
     }
 
     @Test
-    public void addMoviesFindLastTest() {
+    public void addMoviesFindLastMaxTest() {
 
         MoviesManager manager = new MoviesManager();
 
@@ -79,4 +79,51 @@ class MoviesManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void addMoviesFindLastMoreMaximumTest() {
+
+        MoviesManager manager = new MoviesManager();
+
+        manager.add("Film I");
+        manager.add("Film II");
+        manager.add("Film III");
+        manager.add("Film IV");
+
+        String[] expected = {"Film IV", "Film III", "Film II", "Film I"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void addMoviesFindLastLessMaximumTest() {
+
+        MoviesManager manager = new MoviesManager();
+
+        manager.add("Film I");
+        manager.add("Film II");
+
+
+        String[] expected = {"Film II", "Film I"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void addMoviesFindLastEqualMaximumTest() {
+
+        MoviesManager manager = new MoviesManager();
+
+        manager.add("Film I");
+        manager.add("Film II");
+        manager.add("Film III");
+
+        String[] expected = {"Film III", "Film II", "Film I"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
